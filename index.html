@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Для моей зайки ♡</title>
+
+  <!-- Шрифты: Playfair Display (заголовки) и Caveat (рукописный основной текст), оба с кириллицей -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Живой фон: плавающие размытые блики света -->
+  <div class="bg-glow" aria-hidden="true">
+    <span class="glow glow--1"></span>
+    <span class="glow glow--2"></span>
+    <span class="glow glow--3"></span>
+  </div>
+
+  <!-- Слой для летящих сердечек (создаются скриптом) -->
+  <div class="burst-layer" id="burstLayer" aria-hidden="true"></div>
+
+  <!-- Экран приветствия -->
+  <section class="intro" id="intro">
+    <button class="heart-btn" id="heartBtn" aria-label="Открыть сюрприз">
+      <svg class="heart" viewBox="0 0 32 29" aria-hidden="true">
+        <defs>
+          <linearGradient id="heartGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffb3a7"/>
+            <stop offset="1" stop-color="#f08aa0"/>
+          </linearGradient>
+        </defs>
+        <path fill="url(#heartGrad)" d="M23.6 0c-3.4 0-6.3 2.4-7.6 5.7C14.7 2.4 11.8 0 8.4 0 3.8 0 0 3.8 0 8.4c0 9.4 9.5 11.9 16 20.6 6.1-8.7 16-11.6 16-20.6C32 3.8 28.2 0 23.6 0z"/>
+      </svg>
+    </button>
+    <p class="hint">Нажми на меня</p>
+  </section>
+
+  <!-- Основной контент (скрыт до клика) -->
+  <main class="content" id="content" hidden>
+
+    <!-- Поздравление: текст печатается скриптом -->
+    <section class="greeting">
+      <p class="typed" id="typed" aria-live="polite"></p>
+    </section>
+
+    <!-- Воспоминания -->
+    <section class="memories" id="memories" aria-label="Наши воспоминания">
+
+      <!-- Прогресс: сколько карточек уже открыто -->
+      <div class="progress">
+        <p class="progress__label">
+          Нажимай на карточки — за каждой спрятано воспоминание
+          <span class="progress__count" id="progressCount">0 из 9</span>
+        </p>
+        <div class="progress__hearts" id="progressHearts" aria-hidden="true"></div>
+      </div>
+
+      <!--
+        Подписи к фото меняй здесь: атрибут data-caption.
+        Скрипт сам подставит его и на обратную сторону карточки, и под фото.
+      -->
+      <div class="gallery" id="gallery">
+        <figure class="polaroid" data-caption="Наш самый спонтанный и счастливый миг"><img src="img/1.jpg" alt="Воспоминание 1" loading="lazy"></figure>
+        <figure class="polaroid" data-caption="Наш лучший кадр — мы здесь настоящие"><img src="img/2.jpg" alt="Воспоминание 2" loading="lazy"></figure>
+        <figure class="polaroid" data-caption="Случайный кадр, но ты в нём всё равно прекрасна"><img src="img/3.jpg" alt="Воспоминание 3" loading="lazy"></figure>
+        <figure class="polaroid" data-caption="Мы очень старались, и вышло так мило)"><img src="img/4.jpg" alt="Воспоминание 4" loading="lazy"></figure>
+        <figure class="polaroid" data-caption="Этот кадр для меня особенный, он про нас"><img src="img/5.jpg" alt="Воспоминание 5" loading="lazy"></figure>
+        <figure class="polaroid" data-caption="День был сложный, но с тобой — весёлый"><img src="img/6.jpg" alt="Воспоминание 6" loading="lazy"></figure>
+        <figure class="polaroid" data-caption="Особенный день, который хочется повторить"><img src="img/7.jpg" alt="Воспоминание 7" loading="lazy"></figure>
+        <figure class="polaroid" data-caption="Кто-то украл мой телефон… и моё сердце"><img src="img/8.jpg" alt="Воспоминание 8" loading="lazy"></figure>
+        <figure class="polaroid" data-caption="Люблю тебя — просто и навсегда"><img src="img/9.jpg" alt="Воспоминание 9" loading="lazy"></figure>
+      </div>
+    </section>
+
+    <!-- Финал: появляется, когда открыты все 9 карточек -->
+    <section class="finale" id="finale" hidden>
+      <p class="finale__text" id="finaleText" aria-live="polite"></p>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
